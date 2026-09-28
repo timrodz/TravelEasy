@@ -41,6 +41,7 @@ struct BookingRowView: View {
             Spacer(minLength: 0)
         }
         .padding(.vertical, 4)
+        .bookingAttentionBadge(if: booking.needsAttentionBadge)
     }
 
     private func statusChip(_ text: String, systemImage: String) -> some View {

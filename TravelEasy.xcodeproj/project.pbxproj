@@ -29,6 +29,8 @@
 		US005C1B2C3D4E5F607182905 /* AttachmentQuickLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = US005C1B2C3D4E5F607182906 /* AttachmentQuickLook.swift */; };
 		US005D1B2C3D4E5F607182907 /* StoredAttachmentDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = US005D1B2C3D4E5F607182908 /* StoredAttachmentDraft.swift */; };
 		T1EST0000000000000000001 /* TripSummaryLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T1EST0000000000000000002 /* TripSummaryLogicTests.swift */; };
+		US006A1B2C3D4E5F607182901 /* BookingAttention.swift in Sources */ = {isa = PBXBuildFile; fileRef = US006A1B2C3D4E5F607182902 /* BookingAttention.swift */; };
+		US006E1B2C3D4E5F607182905 /* BookingAttentionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = US006E1B2C3D4E5F607182906 /* BookingAttentionTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		US005D1B2C3D4E5F607182908 /* StoredAttachmentDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredAttachmentDraft.swift; sourceTree = "<group>"; };
 		T1EST0000000000000000002 /* TripSummaryLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripSummaryLogicTests.swift; sourceTree = "<group>"; };
 		T1EST0000000000000000003 /* TravelEasyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelEasyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		US006A1B2C3D4E5F607182902 /* BookingAttention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingAttention.swift; sourceTree = "<group>"; };
+		US006E1B2C3D4E5F607182906 /* BookingAttentionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingAttentionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -72,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				T1EST0000000000000000002 /* TripSummaryLogicTests.swift */,
+				US006E1B2C3D4E5F607182906 /* BookingAttentionTests.swift */,
 			);
 			path = TravelEasyTests;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 				US005C1B2C3D4E5F607182906 /* AttachmentQuickLook.swift */,
 				US005D1B2C3D4E5F607182908 /* StoredAttachmentDraft.swift */,
 				E4F5A6B7C8D9012345678906 /* BookingRowView.swift */,
+				US006A1B2C3D4E5F607182902 /* BookingAttention.swift */,
 				B2C3D4E5F60718293A4B5C6E /* CountryPickerView.swift */,
 				D4E5F6A7B8C9012345678902 /* TripSettingsView.swift */,
 				F1A2B3C4D5E60718293A4B02 /* TripSummaryLogic.swift */,
@@ -243,6 +249,7 @@
 				US005B1B2C3D4E5F607182903 /* BookingAttachmentsSection.swift in Sources */,
 				US005C1B2C3D4E5F607182905 /* AttachmentQuickLook.swift in Sources */,
 				US005D1B2C3D4E5F607182907 /* StoredAttachmentDraft.swift in Sources */,
+				US006A1B2C3D4E5F607182901 /* BookingAttention.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				T1EST0000000000000000001 /* TripSummaryLogicTests.swift in Sources */,
+				US006E1B2C3D4E5F607182905 /* BookingAttentionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

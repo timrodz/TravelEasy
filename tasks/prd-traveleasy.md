@@ -99,7 +99,7 @@ Not parallelizable with work that needs a compile.
 | Money | **US-004**              | Split + committed/projected budget + trip date span | US-003                                     |
 | Files | **US-005**              | Attachment UI (open in Preview)                     | US-003 + US-005a                           |
 | Focus | **US-006** → **US-007** | Attention badges, then Up Next card                 | US-003; badges before Up Next in this lane |
-| Notes | **US-008**              | Country summary text box                            | US-002                                     |
+| Notes | **US-008**              | Country summary text box + editable trip title      | US-002                                     |
 
 
 **Parallel tracks (2–3 people/agents):** A = US-004, B = US-005, C = US-006 → US-007, D = US-008.
@@ -193,11 +193,11 @@ Not parallelizable with work that needs a compile.
 
 **Acceptance Criteria:**
 
-- [ ] Reusable badge view: red mark in the top-right corner of the booking row/card
-- [ ] Badge shows when `confirmationStatus == planned` OR `paymentStatus == payLater`
-- [ ] Badge hidden when booked and not pay-later
-- [ ] Applied on country booking lists and any timeline list
-- [ ] Typecheck / build succeeds
+- [x] Reusable badge view: red mark in the top-right corner of the booking row/card
+- [x] Badge shows when `confirmationStatus == planned` OR `paymentStatus == payLater`
+- [x] Badge hidden when booked and not pay-later
+- [x] Applied on country booking lists and any timeline list
+- [x] Typecheck / build succeeds
 - [ ] Verify in the Mac app
 
 ### US-007: Trip Home “Up Next” card
@@ -218,18 +218,19 @@ Not parallelizable with work that needs a compile.
 - [ ] Typecheck / build succeeds
 - [ ] Verify in the Mac app
 
-### US-008: Country summary notes
+### US-008: Country summary notes & editable trip title
 
-**Description:** As a traveler, I want a text box on each country view for important freeform content (visas, tips, contacts, reminders) so key info stays with that country, not buried in booking notes.
+**Description:** As a traveler, I want a text box on each country view for important freeform content (visas, tips, contacts, reminders) and the ability to edit the trip name directly (e.g. from the default "My Trip" header) so key info and trip context are easy to see and personalize.
 
 **Acceptance Criteria:**
 
 - [ ] Add optional `summary` (String, default empty) field on `Country`
 - [ ] Country detail view shows a “Summary” section with a multi-line text box above the bookings list
 - [ ] Placeholder copy indicates purpose (e.g. “Visa, tips, contacts, reminders…”)
-- [ ] Edits save automatically via SwiftData binding (no separate Save button required)
-- [ ] Summary survives quit and relaunch
-- [ ] Empty summary is fine; no validation required
+- [ ] Edits to country summary save automatically via SwiftData binding (no separate Save button required)
+- [ ] In Trip Home, the trip title ("My Trip" by default) is an editable text field (or supports inline rename) that binds directly to `trip.name`
+- [ ] Summary notes and edited trip name survive quit and relaunch
+- [ ] Empty summary is fine; trip name fallback/trimming handled sensibly
 - [ ] Typecheck / build succeeds
 - [ ] Verify in the Mac app
 
@@ -251,6 +252,7 @@ Not parallelizable with work that needs a compile.
 - FR-14: All trip data and attachments must persist across app sessions on the local Mac.
 - FR-15: Flights and transport must support start and end date/times for schedule tracking.
 - FR-16: Each country view must provide an editable multi-line summary text box; content persists with the country.
+- FR-17: The trip name displayed on Trip Home ("My Trip" by default) must be directly editable by the user.
 
 ## Non-Goals (Out of Scope)
 
@@ -314,7 +316,8 @@ Not parallelizable with work that needs a compile.
 - Unbooked and pay-later items are obvious via red badge without opening each row
 - Answer “what does she owe?” from the split summary without a spreadsheet
 - Open a country and read/edit important notes without opening individual bookings
-- Quit and relaunch: all bookings, balances, files, and country summaries still correct
+- Edit trip name directly from the main view and have it update across the window title and sidebar
+- Quit and relaunch: all bookings, balances, files, country summaries, and custom trip name still correct
 
 ## Open Questions
 
