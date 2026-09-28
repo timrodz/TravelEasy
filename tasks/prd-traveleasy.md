@@ -198,7 +198,7 @@ Not parallelizable with work that needs a compile.
 - [x] Badge hidden when booked and not pay-later
 - [x] Applied on country booking lists and any timeline list
 - [x] Typecheck / build succeeds
-- [ ] Verify in the Mac app
+- [x] Verify in the Mac app
 
 ### US-007: Trip Home “Up Next” card
 
@@ -206,17 +206,17 @@ Not parallelizable with work that needs a compile.
 
 **Acceptance Criteria:**
 
-- [ ] Trip Home is the default detail landing view
-- [ ] “Up Next” card shows (omit row if not applicable):
+- [x] Trip Home is the default detail landing view
+- [x] “Up Next” card shows (omit row if not applicable):
   1. Next travel — soonest future `flight` or `transport` by startAt
   2. Current accommodation — `hotel` where startAt ≤ now ≤ endAt
   3. Next accommodation — soonest future `hotel` with startAt &gt; now
   4. Next activity — soonest future `activity` by startAt
-- [ ] Each row shows title, country name, date/time
-- [ ] Rows use the attention badge rules from US-006
-- [ ] Empty state when no dated bookings exist
-- [ ] Typecheck / build succeeds
-- [ ] Verify in the Mac app
+- [x] Each row shows title, country name, date/time
+- [x] Rows use the attention badge rules from US-006
+- [x] Empty state when no dated bookings exist
+- [x] Typecheck / build succeeds
+- [x] Verify in the Mac app
 
 ### US-008: Country summary notes & editable trip title
 

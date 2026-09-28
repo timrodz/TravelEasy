@@ -24,6 +24,8 @@
 		E4F5A6B7C8D9012345678905 /* BookingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F5A6B7C8D9012345678906 /* BookingRowView.swift */; };
 		F1A2B3C4D5E60718293A4B01 /* TripSummaryLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E60718293A4B02 /* TripSummaryLogic.swift */; };
 		F1A2B3C4D5E60718293A4B03 /* TripHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E60718293A4B04 /* TripHomeView.swift */; };
+		US007A1B2C3D4E5F607182901 /* UpNextLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = US007A1B2C3D4E5F607182902 /* UpNextLogic.swift */; };
+		US007E1B2C3D4E5F607182903 /* UpNextLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = US007E1B2C3D4E5F607182904 /* UpNextLogicTests.swift */; };
 		US005A1B2C3D4E5F607182901 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = US005A1B2C3D4E5F607182902 /* FileStorage.swift */; };
 		US005B1B2C3D4E5F607182903 /* BookingAttachmentsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = US005B1B2C3D4E5F607182904 /* BookingAttachmentsSection.swift */; };
 		US005C1B2C3D4E5F607182905 /* AttachmentQuickLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = US005C1B2C3D4E5F607182906 /* AttachmentQuickLook.swift */; };
@@ -52,6 +54,8 @@
 		E4F5A6B7C8D9012345678906 /* BookingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRowView.swift; sourceTree = "<group>"; };
 		F1A2B3C4D5E60718293A4B02 /* TripSummaryLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripSummaryLogic.swift; sourceTree = "<group>"; };
 		F1A2B3C4D5E60718293A4B04 /* TripHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHomeView.swift; sourceTree = "<group>"; };
+		US007A1B2C3D4E5F607182902 /* UpNextLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpNextLogic.swift; sourceTree = "<group>"; };
+		US007E1B2C3D4E5F607182904 /* UpNextLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpNextLogicTests.swift; sourceTree = "<group>"; };
 		US005A1B2C3D4E5F607182902 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
 		US005B1B2C3D4E5F607182904 /* BookingAttachmentsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingAttachmentsSection.swift; sourceTree = "<group>"; };
 		US005C1B2C3D4E5F607182906 /* AttachmentQuickLook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentQuickLook.swift; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				T1EST0000000000000000002 /* TripSummaryLogicTests.swift */,
+				US007E1B2C3D4E5F607182904 /* UpNextLogicTests.swift */,
 				US006E1B2C3D4E5F607182906 /* BookingAttentionTests.swift */,
 			);
 			path = TravelEasyTests;
@@ -118,6 +123,7 @@
 				B2C3D4E5F60718293A4B5C6E /* CountryPickerView.swift */,
 				D4E5F6A7B8C9012345678902 /* TripSettingsView.swift */,
 				F1A2B3C4D5E60718293A4B02 /* TripSummaryLogic.swift */,
+				US007A1B2C3D4E5F607182902 /* UpNextLogic.swift */,
 				F1A2B3C4D5E60718293A4B04 /* TripHomeView.swift */,
 				18603BA6B208D4BA72585180 /* TravelEasyApp.swift */,
 				5899DC7BED81634236EDC432 /* Models */,
@@ -245,6 +251,7 @@
 				D4E5F6A7B8C9012345678901 /* TripSettingsView.swift in Sources */,
 				F1A2B3C4D5E60718293A4B01 /* TripSummaryLogic.swift in Sources */,
 				F1A2B3C4D5E60718293A4B03 /* TripHomeView.swift in Sources */,
+				US007A1B2C3D4E5F607182901 /* UpNextLogic.swift in Sources */,
 				US005A1B2C3D4E5F607182901 /* FileStorage.swift in Sources */,
 				US005B1B2C3D4E5F607182903 /* BookingAttachmentsSection.swift in Sources */,
 				US005C1B2C3D4E5F607182905 /* AttachmentQuickLook.swift in Sources */,
@@ -258,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				T1EST0000000000000000001 /* TripSummaryLogicTests.swift in Sources */,
+				US007E1B2C3D4E5F607182903 /* UpNextLogicTests.swift in Sources */,
 				US006E1B2C3D4E5F607182905 /* BookingAttentionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

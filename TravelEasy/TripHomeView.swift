@@ -9,6 +9,10 @@ struct TripHomeView: View {
         trip.tripSummary()
     }
 
+    private var upNext: UpNextSnapshot {
+        trip.upNext()
+    }
+
     private var currencyCode: String {
         trip.homeCurrency
     }
@@ -19,6 +23,12 @@ struct TripHomeView: View {
                 Text(trip.name)
                     .font(.largeTitle)
                     .fontWeight(.semibold)
+
+                GroupBox("Up Next") {
+                    upNextContent
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical, 4)
+                }
 
                 GroupBox("Budget") {
                     VStack(alignment: .leading, spacing: 8) {
@@ -86,6 +96,61 @@ struct TripHomeView: View {
                 .help("Edit trip name, currency, and traveler labels")
             }
         }
+    }
+
+    @ViewBuilder
+    private var upNextContent: some View {
+        if !upNext.hasAnyDatedBookings {
+            Text("No dated bookings yet")
+                .foregroundStyle(.secondary)
+        } else if !upNext.hasVisibleRows {
+            Text("Nothing upcoming — add dates to flights, stays, or activities.")
+                .foregroundStyle(.secondary)
+        } else {
+            VStack(alignment: .leading, spacing: 12) {
+                if let item = upNext.nextTravel {
+                    upNextRow(label: "Next travel", item: item, systemImage: "airplane")
+                }
+                if let item = upNext.currentAccommodation {
+                    upNextRow(label: "Current stay", item: item, systemImage: "bed.double")
+                }
+                if let item = upNext.nextAccommodation {
+                    upNextRow(label: "Next stay", item: item, systemImage: "bed.double")
+                }
+                if let item = upNext.nextActivity {
+                    upNextRow(label: "Next activity", item: item, systemImage: "figure.walk")
+                }
+            }
+        }
+    }
+
+    private func upNextRow(label: String, item: UpNextItem, systemImage: String) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(label)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .textCase(.uppercase)
+            HStack(alignment: .top, spacing: 10) {
+                Image(systemName: systemImage)
+                    .foregroundStyle(.secondary)
+                    .frame(width: 22)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(item.title)
+                        .font(.body)
+                        .fontWeight(.medium)
+                    Text(item.countryName)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                    if let span = BookingDateFormatting.span(start: item.startAt, end: item.endAt) {
+                        Text(span)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                Spacer(minLength: 0)
+            }
+        }
+        .bookingAttentionBadge(if: item.needsAttentionBadge)
     }
 
     private var tripDateSpanText: String? {
