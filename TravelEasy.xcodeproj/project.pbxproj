@@ -15,6 +15,10 @@
 		AFF10C28F003A9A0CC5117B9 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7797897F8A1B454708A3E7C /* Country.swift */; };
 		B69BA4A19CB7A47AE8550D27 /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C558B961AA5E72650FCA43 /* Booking.swift */; };
 		C50FB1F22B1DB6F0A08B509E /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083F5EA85550F5803FCA09D /* Trip.swift */; };
+		D4E5F6A7B8C9012345678901 /* TripSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E5F6A7B8C9012345678902 /* TripSettingsView.swift */; };
+		A1B2C3D4E5F60718293A4B5C /* ISOCountryCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5D /* ISOCountryCatalog.swift */; };
+		B2C3D4E5F60718293A4B5C6D /* CountryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C3D4E5F60718293A4B5C6E /* CountryPickerView.swift */; };
+		C3D4E5F60718293A4B5C6D7E /* AddCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D4E5F60718293A4B5C6D7F /* AddCountryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,10 @@
 		C7797897F8A1B454708A3E7C /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		D5C558B961AA5E72650FCA43 /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
 		F9A73B83413122F0F6A03728 /* BookingEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingEnums.swift; sourceTree = "<group>"; };
+		D4E5F6A7B8C9012345678902 /* TripSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripSettingsView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60718293A4B5D /* ISOCountryCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISOCountryCatalog.swift; sourceTree = "<group>"; };
+		B2C3D4E5F60718293A4B5C6E /* CountryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerView.swift; sourceTree = "<group>"; };
+		C3D4E5F60718293A4B5C6D7F /* AddCountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCountryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -45,6 +53,7 @@
 				D5C558B961AA5E72650FCA43 /* Booking.swift */,
 				F9A73B83413122F0F6A03728 /* BookingEnums.swift */,
 				C7797897F8A1B454708A3E7C /* Country.swift */,
+				A1B2C3D4E5F60718293A4B5D /* ISOCountryCatalog.swift */,
 				8083F5EA85550F5803FCA09D /* Trip.swift */,
 			);
 			path = Models;
@@ -55,6 +64,9 @@
 			children = (
 				A01560A084AEEB74E552F46D /* Assets.xcassets */,
 				989FC9B33FFC9EA1DB1AF7E7 /* ContentView.swift */,
+				C3D4E5F60718293A4B5C6D7F /* AddCountryView.swift */,
+				B2C3D4E5F60718293A4B5C6E /* CountryPickerView.swift */,
+				D4E5F6A7B8C9012345678902 /* TripSettingsView.swift */,
 				18603BA6B208D4BA72585180 /* TravelEasyApp.swift */,
 				5899DC7BED81634236EDC432 /* Models */,
 			);
@@ -141,8 +153,12 @@
 				3EA1FE3225EC753FDC4BC745 /* BookingEnums.swift in Sources */,
 				05D31C62556A47922C690F5C /* ContentView.swift in Sources */,
 				AFF10C28F003A9A0CC5117B9 /* Country.swift in Sources */,
+				A1B2C3D4E5F60718293A4B5C /* ISOCountryCatalog.swift in Sources */,
+				B2C3D4E5F60718293A4B5C6D /* CountryPickerView.swift in Sources */,
+				C3D4E5F60718293A4B5C6D7E /* AddCountryView.swift in Sources */,
 				8AA7C07DDF228978DEA19981 /* TravelEasyApp.swift in Sources */,
 				C50FB1F22B1DB6F0A08B509E /* Trip.swift in Sources */,
+				D4E5F6A7B8C9012345678901 /* TripSettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

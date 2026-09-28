@@ -120,13 +120,13 @@ Not parallelizable with work that needs a compile.
 
 **Acceptance Criteria:**
 
-- [ ] On first launch, create a default Trip if none exists
-- [ ] Sidebar lists countries for the trip; user can add, rename, reorder (or sort by sortOrder), and delete a country
-- [ ] Deleting a country deletes or blocks deletion when it has bookings (choose cascade delete; document in UI)
-- [ ] Trip settings editable: trip name, home currency, person A/B display names
-- [ ] Data survives quit and relaunch
-- [ ] Typecheck / build succeeds
-- [ ] Verify in the Mac app (run TravelEasy from Xcode)
+- [x] On first launch, create a default Trip if none exists
+- [x] Sidebar lists countries for the trip; user can add, rename, reorder (or sort by sortOrder), and delete a country
+- [x] Deleting a country deletes or blocks deletion when it has bookings (choose cascade delete; document in UI)
+- [x] Trip settings editable: trip name, home currency, person A/B display names
+- [x] Data survives quit and relaunch
+- [x] Typecheck / build succeeds
+- [x] Verify in the Mac app (run TravelEasy from Xcode)
 
 ### US-003: Booking CRUD with planning defaults
 
