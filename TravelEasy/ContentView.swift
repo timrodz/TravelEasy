@@ -1,11 +1,16 @@
 import SwiftData
 import SwiftUI
 
+private enum SidebarSelection: Hashable {
+    case tripHome
+    case country(PersistentIdentifier)
+}
+
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var trips: [Trip]
 
-    @State private var selectedCountry: Country?
+    @State private var sidebarSelection: SidebarSelection? = .tripHome
     @State private var showingAddCountry = false
     @State private var showingTripSettings = false
     @State private var countryPendingDelete: Country?
@@ -22,6 +27,11 @@ struct ContentView: View {
         return Set(trip.countries.map(\.isoCode).filter { !$0.isEmpty })
     }
 
+    private var selectedCountry: Country? {
+        guard case .country(let id) = sidebarSelection else { return nil }
+        return sortedCountries.first { $0.persistentModelID == id }
+    }
+
     var body: some View {
         NavigationSplitView {
             sidebar
@@ -30,6 +40,9 @@ struct ContentView: View {
             detail
         }
         .task { ensureDefaultTrip() }
+        .onChange(of: sortedCountries.map(\.persistentModelID)) { _, _ in
+            reconcileSidebarSelection()
+        }
         .sheet(isPresented: $showingTripSettings) {
             if let trip {
                 TripSettingsView(trip: trip)
@@ -57,8 +70,11 @@ struct ContentView: View {
     }
 
     private var sidebar: some View {
-        List(selection: $selectedCountry) {
+        List(selection: $sidebarSelection) {
             Section {
+                Label("Trip Home", systemImage: "house")
+                    .tag(SidebarSelection.tripHome)
+
                 ForEach(sortedCountries) { country in
                     Label {
                         Text(country.name)
@@ -66,10 +82,10 @@ struct ContentView: View {
                         Text(country.flagEmoji)
                             .font(.title3)
                     }
-                    .tag(country)
+                    .tag(SidebarSelection.country(country.persistentModelID))
                     .contextMenu {
                         Button("Change Country…") {
-                            selectedCountry = country
+                            sidebarSelection = .country(country.persistentModelID)
                         }
                         Button("Delete…", role: .destructive) {
                             countryPendingDelete = country
@@ -82,35 +98,41 @@ struct ContentView: View {
             }
         }
         .navigationTitle(trip?.name ?? "TravelEasy")
-        .toolbar {
-            ToolbarItemGroup {
-                Button {
-                    showingAddCountry = true
-                } label: {
-                    Label("Add Country", systemImage: "plus")
-                }
-                Button {
-                    showingTripSettings = true
-                } label: {
-                    Label("Trip Settings", systemImage: "gearshape")
-                }
-            }
-        }
     }
 
     @ViewBuilder
     private var detail: some View {
-        if let country = selectedCountry {
-            CountryDetailView(
-                country: country,
-                excludedISOCodes: excludedISOCodes(for: country)
-            )
-        } else {
-            ContentUnavailableView(
-                "Select a country",
-                systemImage: "globe",
-                description: Text("Choose a country in the sidebar, or add one from the ISO list.")
-            )
+        Group {
+            if let country = selectedCountry {
+                CountryDetailView(
+                    country: country,
+                    excludedISOCodes: excludedISOCodes(for: country)
+                )
+            } else if let trip {
+                TripHomeView(
+                    trip: trip,
+                    onAddCountry: { showingAddCountry = true },
+                    onTripSettings: { showingTripSettings = true }
+                )
+            } else {
+                ContentUnavailableView(
+                    "Loading trip…",
+                    systemImage: "suitcase",
+                    description: Text("Setting up your trip.")
+                )
+            }
+        }
+        .toolbar {
+            if selectedCountry != nil {
+                ToolbarItem(placement: .navigation) {
+                    Button {
+                        sidebarSelection = .tripHome
+                    } label: {
+                        Label("Trip Home", systemImage: "house")
+                    }
+                    .help("Show trip summary")
+                }
+            }
         }
     }
 
@@ -124,6 +146,13 @@ struct ContentView: View {
     private func ensureDefaultTrip() {
         guard trips.isEmpty else { return }
         modelContext.insert(Trip())
+    }
+
+    private func reconcileSidebarSelection() {
+        guard case .country(let id) = sidebarSelection else { return }
+        if !sortedCountries.contains(where: { $0.persistentModelID == id }) {
+            sidebarSelection = .tripHome
+        }
     }
 
     private func excludedISOCodes(for country: Country) -> Set<String> {
@@ -144,7 +173,7 @@ struct ContentView: View {
         let country = Country(isoCountry: isoCountry, sortOrder: nextOrder)
         country.trip = trip
         modelContext.insert(country)
-        selectedCountry = country
+        sidebarSelection = .country(country.persistentModelID)
     }
 
     private func moveCountries(from source: IndexSet, to destination: Int) {
@@ -157,8 +186,8 @@ struct ContentView: View {
     }
 
     private func deleteCountry(_ country: Country) {
-        if selectedCountry?.persistentModelID == country.persistentModelID {
-            selectedCountry = nil
+        if case .country(let id) = sidebarSelection, id == country.persistentModelID {
+            sidebarSelection = .tripHome
         }
         modelContext.delete(country)
         countryPendingDelete = nil

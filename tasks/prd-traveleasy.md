@@ -16,6 +16,7 @@ The primary user books most of the trip and needs one place to see what is booke
 - Surface “Up Next” (travel, stays, activity) on the home screen
 - Flag unbooked or pay-later items with a red top-right attention badge
 - Open confirmation files in macOS Preview (no in-app preview)
+- Let users keep freeform important notes per country (visa, tips, contacts)
 
 ## Delivery / Dependencies
 
@@ -44,6 +45,7 @@ flowchart TD
     US005[US-005 Attachment UI open in Preview]
     US006[US-006 Badges on lists and timeline]
     US007[US-007 Up Next card Trip Home]
+    US008[US-008 Country summary notes]
   end
 
   XcodeReady --> US001
@@ -51,6 +53,7 @@ flowchart TD
   US001b --> US003
   US001b --> US005a
   US002 --> US003
+  US002 --> US008
   US003 --> US004
   US003 --> US006
   US003 --> US007
@@ -69,32 +72,39 @@ Not parallelizable with work that needs a compile.
 
 ### Phase 1 — App foundation (serial, one track)
 
-| ID | Task | Layer | Notes |
-|----|------|-------|-------|
-| **US-001** | macOS SwiftUI app, bundle id, sandbox, entitlements, empty `NavigationSplitView` shell | Foundation | Produces the `.xcodeproj` |
-| **US-001b** | SwiftData models: `Trip`, `Country`, `Booking`, `Attachment` + enums | Data | Same session/PR as US-001 is fine |
+
+| ID          | Task                                                                                   | Layer      | Notes                             |
+| ----------- | -------------------------------------------------------------------------------------- | ---------- | --------------------------------- |
+| **US-001**  | macOS SwiftUI app, bundle id, sandbox, entitlements, empty `NavigationSplitView` shell | Foundation | Produces the `.xcodeproj`         |
+| **US-001b** | SwiftData models: `Trip`, `Country`, `Booking`, `Attachment` + enums                   | Data       | Same session/PR as US-001 is fine |
+
 
 **Rule:** No feature UI merges before US-001b lands.
 
 ### Phase 2 — Core product surface
 
-| ID | Task | Layer | Depends on | Parallel? |
-|----|------|-------|------------|-----------|
-| **US-002** | Trip bootstrap + Country CRUD | UI + data | US-001b | Start first |
-| **US-003** | Booking CRUD (planning defaults) | UI + data | US-002 | After countries |
-| **US-005a** | `FileStorage` helper (no UI) | Services | US-001b | **Yes — parallel with US-002/US-003** |
+
+| ID          | Task                             | Layer     | Depends on | Parallel?                             |
+| ----------- | -------------------------------- | --------- | ---------- | ------------------------------------- |
+| **US-002**  | Trip bootstrap + Country CRUD    | UI + data | US-001b    | Start first                           |
+| **US-003**  | Booking CRUD (planning defaults) | UI + data | US-002     | After countries                       |
+| **US-005a** | `FileStorage` helper (no UI)     | Services  | US-001b    | **Yes — parallel with US-002/US-003** |
+
 
 ### Phase 3 — Feature lanes (parallel after US-003)
 
-| Lane | ID | Task | Depends on |
-|------|----|------|------------|
-| Money | **US-004** | Split + committed/projected budget + trip date span | US-003 |
-| Files | **US-005** | Attachment UI (open in Preview) | US-003 + US-005a |
-| Focus | **US-006** → **US-007** | Attention badges, then Up Next card | US-003; badges before Up Next in this lane |
 
-**Parallel tracks (2–3 people/agents):** A = US-004, B = US-005, C = US-006 → US-007.
+| Lane  | ID                      | Task                                                | Depends on                                 |
+| ----- | ----------------------- | --------------------------------------------------- | ------------------------------------------ |
+| Money | **US-004**              | Split + committed/projected budget + trip date span | US-003                                     |
+| Files | **US-005**              | Attachment UI (open in Preview)                     | US-003 + US-005a                           |
+| Focus | **US-006** → **US-007** | Attention badges, then Up Next card                 | US-003; badges before Up Next in this lane |
+| Notes | **US-008**              | Country summary text box                            | US-002                                     |
 
-**Solo order:** US-006 → US-004 → US-007 → US-005 (or files earlier if receipts matter sooner).
+
+**Parallel tracks (2–3 people/agents):** A = US-004, B = US-005, C = US-006 → US-007, D = US-008.
+
+**Solo order:** US-006 → US-004 → US-007 → US-005 → US-008 (or files/notes earlier if those matter sooner).
 
 ## User Stories
 
@@ -143,7 +153,7 @@ Not parallelizable with work that needs a compile.
 - [x] List shows type, title, dates, confirmation, payment at a glance
 - [x] Data survives quit and relaunch
 - [x] Typecheck / build succeeds
-- [ ] Verify in the Mac app
+- [x] Verify in the Mac app
 
 ### US-004: Split summary, budget, and trip date span
 
@@ -151,15 +161,15 @@ Not parallelizable with work that needs a compile.
 
 **Acceptance Criteria:**
 
-- [ ] Pure logic (testable) computes:
+- [x] Pure logic (testable) computes:
   - Split: only `paymentStatus == paid` rows with an amount; each person’s share is amount/2; net owed between person A and B
   - Committed budget: sum of amounts on `booked` items
   - Projected budget: committed + amounts on `planned` items
   - Trip date span: min startAt … max endAt across bookings that have dates (planned included)
-- [ ] Summary UI on Trip Home (or dedicated summary section) shows the above in home currency
-- [ ] Planned / unpaid items do not affect the 50/50 owe figure until marked `paid`
-- [ ] Adding a planned booking with amount and dates updates projected budget and date span after save
-- [ ] Typecheck / build succeeds
+- [x] Summary UI on Trip Home (or dedicated summary section) shows the above in home currency
+- [x] Planned / unpaid items do not affect the 50/50 owe figure until marked `paid`
+- [x] Adding a planned booking with amount and dates updates projected budget and date span after save
+- [x] Typecheck / build succeeds
 - [ ] Verify in the Mac app
 
 ### US-005: File attachments (storage + UI)
@@ -200,11 +210,26 @@ Not parallelizable with work that needs a compile.
 - [ ] “Up Next” card shows (omit row if not applicable):
   1. Next travel — soonest future `flight` or `transport` by startAt
   2. Current accommodation — `hotel` where startAt ≤ now ≤ endAt
-  3. Next accommodation — soonest future `hotel` with startAt > now
+  3. Next accommodation — soonest future `hotel` with startAt &gt; now
   4. Next activity — soonest future `activity` by startAt
 - [ ] Each row shows title, country name, date/time
 - [ ] Rows use the attention badge rules from US-006
 - [ ] Empty state when no dated bookings exist
+- [ ] Typecheck / build succeeds
+- [ ] Verify in the Mac app
+
+### US-008: Country summary notes
+
+**Description:** As a traveler, I want a text box on each country view for important freeform content (visas, tips, contacts, reminders) so key info stays with that country, not buried in booking notes.
+
+**Acceptance Criteria:**
+
+- [ ] Add optional `summary` (String, default empty) field on `Country`
+- [ ] Country detail view shows a “Summary” section with a multi-line text box above the bookings list
+- [ ] Placeholder copy indicates purpose (e.g. “Visa, tips, contacts, reminders…”)
+- [ ] Edits save automatically via SwiftData binding (no separate Save button required)
+- [ ] Summary survives quit and relaunch
+- [ ] Empty summary is fine; no validation required
 - [ ] Typecheck / build succeeds
 - [ ] Verify in the Mac app
 
@@ -225,6 +250,7 @@ Not parallelizable with work that needs a compile.
 - FR-13: The system must allow attaching files to bookings, persist them on disk, and open them via Preview.
 - FR-14: All trip data and attachments must persist across app sessions on the local Mac.
 - FR-15: Flights and transport must support start and end date/times for schedule tracking.
+- FR-16: Each country view must provide an editable multi-line summary text box; content persists with the country.
 
 ## Non-Goals (Out of Scope)
 
@@ -248,13 +274,15 @@ Not parallelizable with work that needs a compile.
 
 ## Technical Considerations
 
-| Layer | Choice |
-|-------|--------|
-| Platform | macOS 14+ SwiftUI |
-| Persistence | SwiftData |
-| Files | Application Support copies; open with `NSWorkspace` |
-| UI shell | `NavigationSplitView` |
-| Bundle id | `com.timrodz.traveleasy` |
+
+| Layer       | Choice                                              |
+| ----------- | --------------------------------------------------- |
+| Platform    | macOS 14+ SwiftUI                                   |
+| Persistence | SwiftData                                           |
+| Files       | Application Support copies; open with `NSWorkspace` |
+| UI shell    | `NavigationSplitView`                               |
+| Bundle id   | `com.timrodz.traveleasy`                            |
+
 
 ### Xcode setup checklist
 
@@ -267,7 +295,7 @@ Not parallelizable with work that needs a compile.
 ### Domain model
 
 - `Trip`: name, homeCurrency, personAName, personBName → countries
-- `Country`: name, sortOrder → bookings
+- `Country`: name, sortOrder, summary (optional freeform notes) → bookings
 - `Booking`: type, title, startAt?, endAt?, amount?, confirmationStatus, paymentStatus, paidBy?, notes → attachments
 - `Attachment`: originalFilename, storedRelativePath
 
@@ -281,14 +309,16 @@ Not parallelizable with work that needs a compile.
 ## Success Metrics
 
 - Add a planned what-if booking (no payment) in under one minute; projected budget/dates update
-- Add a booked item with a receipt attachment in under ~2 minutes
+- Add a booked item with a receipt attachment in under \~2 minutes
 - From Trip Home alone, identify next travel, current/next stay, and next activity
 - Unbooked and pay-later items are obvious via red badge without opening each row
 - Answer “what does she owe?” from the split summary without a spreadsheet
-- Quit and relaunch: all bookings, balances, and files still correct
+- Open a country and read/edit important notes without opening individual bookings
+- Quit and relaunch: all bookings, balances, files, and country summaries still correct
 
 ## Open Questions
 
 - Defaults locked: home currency **NZD**; labels **Me** / **Partner**; planned items never enter split until `paid`
 - Country delete behavior when bookings exist: cascade vs prevent — implement cascade with confirmation dialog unless revisited
 - Whether `paymentStatus = unset` on a **booked** item should also badge as unpaid — **no for MVP** (badge only planned or payLater)
+

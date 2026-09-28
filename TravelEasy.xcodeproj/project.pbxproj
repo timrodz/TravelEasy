@@ -22,6 +22,9 @@
 		E4F5A6B7C8D9012345678901 /* BookingDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F5A6B7C8D9012345678902 /* BookingDisplay.swift */; };
 		E4F5A6B7C8D9012345678903 /* BookingEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F5A6B7C8D9012345678904 /* BookingEditorView.swift */; };
 		E4F5A6B7C8D9012345678905 /* BookingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F5A6B7C8D9012345678906 /* BookingRowView.swift */; };
+		F1A2B3C4D5E60718293A4B01 /* TripSummaryLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E60718293A4B02 /* TripSummaryLogic.swift */; };
+		F1A2B3C4D5E60718293A4B03 /* TripHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E60718293A4B04 /* TripHomeView.swift */; };
+		T1EST0000000000000000001 /* TripSummaryLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T1EST0000000000000000002 /* TripSummaryLogicTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +44,10 @@
 		E4F5A6B7C8D9012345678902 /* BookingDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDisplay.swift; sourceTree = "<group>"; };
 		E4F5A6B7C8D9012345678904 /* BookingEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingEditorView.swift; sourceTree = "<group>"; };
 		E4F5A6B7C8D9012345678906 /* BookingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRowView.swift; sourceTree = "<group>"; };
+		F1A2B3C4D5E60718293A4B02 /* TripSummaryLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripSummaryLogic.swift; sourceTree = "<group>"; };
+		F1A2B3C4D5E60718293A4B04 /* TripHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHomeView.swift; sourceTree = "<group>"; };
+		T1EST0000000000000000002 /* TripSummaryLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripSummaryLogicTests.swift; sourceTree = "<group>"; };
+		T1EST0000000000000000003 /* TravelEasyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelEasyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -48,8 +55,17 @@
 			isa = PBXGroup;
 			children = (
 				3D233BE404AF9F8D7B2041A2 /* TravelEasy.app */,
+				T1EST0000000000000000003 /* TravelEasyTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		T1EST0000000000000000004 /* TravelEasyTests */ = {
+			isa = PBXGroup;
+			children = (
+				T1EST0000000000000000002 /* TripSummaryLogicTests.swift */,
+			);
+			path = TravelEasyTests;
 			sourceTree = "<group>";
 		};
 		5899DC7BED81634236EDC432 /* Models */ = {
@@ -76,6 +92,8 @@
 				E4F5A6B7C8D9012345678906 /* BookingRowView.swift */,
 				B2C3D4E5F60718293A4B5C6E /* CountryPickerView.swift */,
 				D4E5F6A7B8C9012345678902 /* TripSettingsView.swift */,
+				F1A2B3C4D5E60718293A4B02 /* TripSummaryLogic.swift */,
+				F1A2B3C4D5E60718293A4B04 /* TripHomeView.swift */,
 				18603BA6B208D4BA72585180 /* TravelEasyApp.swift */,
 				5899DC7BED81634236EDC432 /* Models */,
 			);
@@ -86,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				6802859A8ED335D8A3273FC2 /* TravelEasy */,
+				T1EST0000000000000000004 /* TravelEasyTests */,
 				123DDAE2C09AFD889EA69F00 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,6 +130,25 @@
 			productReference = 3D233BE404AF9F8D7B2041A2 /* TravelEasy.app */;
 			productType = "com.apple.product-type.application";
 		};
+		T1EST0000000000000000005 /* TravelEasyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = T1EST0000000000000000006 /* Build configuration list for PBXNativeTarget "TravelEasyTests" */;
+			buildPhases = (
+				T1EST0000000000000000007 /* Sources */,
+				T1EST0000000000000000008 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				T1EST0000000000000000009 /* PBXTargetDependency */,
+			);
+			name = TravelEasyTests;
+			packageProductDependencies = (
+			);
+			productName = TravelEasyTests;
+			productReference = T1EST0000000000000000003 /* TravelEasyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -120,6 +158,13 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					6BDA34FDD27DA583A6AD66FB = {
+						TestTargetID = T1EST0000000000000000005;
+					};
+					T1EST0000000000000000005 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 6BDA34FDD27DA583A6AD66FB;
+					};
 				};
 			};
 			buildConfigurationList = D4C1908C6BB62D33C14F0680 /* Build configuration list for PBXProject "TravelEasy" */;
@@ -137,6 +182,7 @@
 			projectRoot = "";
 			targets = (
 				6BDA34FDD27DA583A6AD66FB /* TravelEasy */,
+				T1EST0000000000000000005 /* TravelEasyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -171,10 +217,48 @@
 				8AA7C07DDF228978DEA19981 /* TravelEasyApp.swift in Sources */,
 				C50FB1F22B1DB6F0A08B509E /* Trip.swift in Sources */,
 				D4E5F6A7B8C9012345678901 /* TripSettingsView.swift in Sources */,
+				F1A2B3C4D5E60718293A4B01 /* TripSummaryLogic.swift in Sources */,
+				F1A2B3C4D5E60718293A4B03 /* TripHomeView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		T1EST0000000000000000007 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				T1EST0000000000000000001 /* TripSummaryLogicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		T1EST0000000000000000008 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXContainerItemProxy section */
+		T1EST000000000000000000A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1487C3DEA4DFE4912E25FA6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BDA34FDD27DA583A6AD66FB;
+			remoteInfo = TravelEasy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		T1EST0000000000000000009 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6BDA34FDD27DA583A6AD66FB /* TravelEasy */;
+			targetProxy = T1EST000000000000000000A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		353CDD35F2AE69BC803FB433 /* Debug */ = {
@@ -316,6 +400,50 @@
 			};
 			name = Release;
 		};
+		T1EST000000000000000000B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timrodz.traveleasy.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TravelEasy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TravelEasy";
+			};
+			name = Debug;
+		};
+		T1EST000000000000000000C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timrodz.traveleasy.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TravelEasy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TravelEasy";
+			};
+			name = Release;
+		};
 		DEFADEAC0E0A8CC9E6A90E4E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -353,6 +481,15 @@
 			buildConfigurations = (
 				353CDD35F2AE69BC803FB433 /* Debug */,
 				7D5730663CD38CF48938DA6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		T1EST0000000000000000006 /* Build configuration list for PBXNativeTarget "TravelEasyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				T1EST000000000000000000B /* Debug */,
+				T1EST000000000000000000C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
