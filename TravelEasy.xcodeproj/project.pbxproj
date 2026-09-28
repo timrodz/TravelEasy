@@ -24,6 +24,10 @@
 		E4F5A6B7C8D9012345678905 /* BookingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F5A6B7C8D9012345678906 /* BookingRowView.swift */; };
 		F1A2B3C4D5E60718293A4B01 /* TripSummaryLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E60718293A4B02 /* TripSummaryLogic.swift */; };
 		F1A2B3C4D5E60718293A4B03 /* TripHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E60718293A4B04 /* TripHomeView.swift */; };
+		US005A1B2C3D4E5F607182901 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = US005A1B2C3D4E5F607182902 /* FileStorage.swift */; };
+		US005B1B2C3D4E5F607182903 /* BookingAttachmentsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = US005B1B2C3D4E5F607182904 /* BookingAttachmentsSection.swift */; };
+		US005C1B2C3D4E5F607182905 /* AttachmentQuickLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = US005C1B2C3D4E5F607182906 /* AttachmentQuickLook.swift */; };
+		US005D1B2C3D4E5F607182907 /* StoredAttachmentDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = US005D1B2C3D4E5F607182908 /* StoredAttachmentDraft.swift */; };
 		T1EST0000000000000000001 /* TripSummaryLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T1EST0000000000000000002 /* TripSummaryLogicTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +50,10 @@
 		E4F5A6B7C8D9012345678906 /* BookingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRowView.swift; sourceTree = "<group>"; };
 		F1A2B3C4D5E60718293A4B02 /* TripSummaryLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripSummaryLogic.swift; sourceTree = "<group>"; };
 		F1A2B3C4D5E60718293A4B04 /* TripHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHomeView.swift; sourceTree = "<group>"; };
+		US005A1B2C3D4E5F607182902 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
+		US005B1B2C3D4E5F607182904 /* BookingAttachmentsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingAttachmentsSection.swift; sourceTree = "<group>"; };
+		US005C1B2C3D4E5F607182906 /* AttachmentQuickLook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentQuickLook.swift; sourceTree = "<group>"; };
+		US005D1B2C3D4E5F607182908 /* StoredAttachmentDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredAttachmentDraft.swift; sourceTree = "<group>"; };
 		T1EST0000000000000000002 /* TripSummaryLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripSummaryLogicTests.swift; sourceTree = "<group>"; };
 		T1EST0000000000000000003 /* TravelEasyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelEasyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -66,6 +74,14 @@
 				T1EST0000000000000000002 /* TripSummaryLogicTests.swift */,
 			);
 			path = TravelEasyTests;
+			sourceTree = "<group>";
+		};
+		US005S1B2C3D4E5F607182900 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				US005A1B2C3D4E5F607182902 /* FileStorage.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		5899DC7BED81634236EDC432 /* Models */ = {
@@ -89,6 +105,9 @@
 				C3D4E5F60718293A4B5C6D7F /* AddCountryView.swift */,
 				E4F5A6B7C8D9012345678902 /* BookingDisplay.swift */,
 				E4F5A6B7C8D9012345678904 /* BookingEditorView.swift */,
+				US005B1B2C3D4E5F607182904 /* BookingAttachmentsSection.swift */,
+				US005C1B2C3D4E5F607182906 /* AttachmentQuickLook.swift */,
+				US005D1B2C3D4E5F607182908 /* StoredAttachmentDraft.swift */,
 				E4F5A6B7C8D9012345678906 /* BookingRowView.swift */,
 				B2C3D4E5F60718293A4B5C6E /* CountryPickerView.swift */,
 				D4E5F6A7B8C9012345678902 /* TripSettingsView.swift */,
@@ -96,6 +115,7 @@
 				F1A2B3C4D5E60718293A4B04 /* TripHomeView.swift */,
 				18603BA6B208D4BA72585180 /* TravelEasyApp.swift */,
 				5899DC7BED81634236EDC432 /* Models */,
+				US005S1B2C3D4E5F607182900 /* Services */,
 			);
 			path = TravelEasy;
 			sourceTree = "<group>";
@@ -219,6 +239,10 @@
 				D4E5F6A7B8C9012345678901 /* TripSettingsView.swift in Sources */,
 				F1A2B3C4D5E60718293A4B01 /* TripSummaryLogic.swift in Sources */,
 				F1A2B3C4D5E60718293A4B03 /* TripHomeView.swift in Sources */,
+				US005A1B2C3D4E5F607182901 /* FileStorage.swift in Sources */,
+				US005B1B2C3D4E5F607182903 /* BookingAttachmentsSection.swift in Sources */,
+				US005C1B2C3D4E5F607182905 /* AttachmentQuickLook.swift in Sources */,
+				US005D1B2C3D4E5F607182907 /* StoredAttachmentDraft.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

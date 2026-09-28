@@ -170,7 +170,7 @@ Not parallelizable with work that needs a compile.
 - [x] Planned / unpaid items do not affect the 50/50 owe figure until marked `paid`
 - [x] Adding a planned booking with amount and dates updates projected budget and date span after save
 - [x] Typecheck / build succeeds
-- [ ] Verify in the Mac app
+- [x] Verify in the Mac app
 
 ### US-005: File attachments (storage + UI)
 
@@ -178,14 +178,14 @@ Not parallelizable with work that needs a compile.
 
 **Acceptance Criteria:**
 
-- [ ] `FileStorage` service copies picked files into Application Support under a stable relative path; can delete and resolve file URLs (US-005a; can ship before UI)
-- [ ] On booking detail: add attachment(s) via file picker
-- [ ] List attachments by original filename
-- [ ] Double-click / Open action uses `NSWorkspace` to open in Preview (or default app)
-- [ ] Remove attachment deletes store file and model row
-- [ ] Attachments survive quit and relaunch and still open
-- [ ] Typecheck / build succeeds
-- [ ] Verify in the Mac app
+- [x] `FileStorage` service copies picked files into Application Support under a stable relative path; can delete and resolve file URLs (US-005a; can ship before UI)
+- [x] On booking detail: add attachment(s) via file picker
+- [x] List attachments by original filename
+- [x] Double-click / Open action uses `NSWorkspace` to open in Preview (or default app)
+- [x] Remove attachment deletes store file and model row
+- [x] Attachments survive quit and relaunch and still open
+- [x] Typecheck / build succeeds
+- [x] Verify in the Mac app
 
 ### US-006: Attention badges on lists and timeline
 

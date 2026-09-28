@@ -32,6 +32,9 @@ struct BookingRowView: View {
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
+                    ForEach(booking.attachmentsSortedByFilename, id: \.persistentModelID) { attachment in
+                        AttachmentQuickLookChip(attachment: attachment)
+                    }
                 }
                 .padding(.top, 2)
             }

@@ -189,6 +189,9 @@ struct ContentView: View {
         if case .country(let id) = sidebarSelection, id == country.persistentModelID {
             sidebarSelection = .tripHome
         }
+        for booking in country.bookings {
+            booking.deleteAttachmentFiles()
+        }
         modelContext.delete(country)
         countryPendingDelete = nil
     }
@@ -334,11 +337,13 @@ private struct CountryDetailView: View {
     private func deleteBookingsAtOffsets(_ offsets: IndexSet) {
         for index in offsets {
             let booking = sortedBookings[index]
+            booking.deleteAttachmentFiles()
             modelContext.delete(booking)
         }
     }
 
     private func deleteBooking(_ booking: Booking) {
+        booking.deleteAttachmentFiles()
         modelContext.delete(booking)
         bookingPendingDelete = nil
     }

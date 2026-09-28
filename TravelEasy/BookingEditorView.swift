@@ -19,6 +19,7 @@ struct BookingEditorView: View {
     @State private var paymentStatus: PaymentStatus = .unset
     @State private var paidBy: PaidBy?
     @State private var notes = ""
+    @State private var pendingAttachments: [StoredAttachmentDraft] = []
 
     private var isEditing: Bool { booking != nil }
 
@@ -93,19 +94,21 @@ struct BookingEditorView: View {
                     TextField("Notes (optional)", text: $notes, axis: .vertical)
                         .lineLimit(3...8)
                 }
+
+                BookingAttachmentsSection(booking: booking, pendingAttachments: $pendingAttachments)
             }
             .formStyle(.grouped)
             .navigationTitle(isEditing ? "Edit Booking" : "New Booking")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { dismiss() }
+                    Button("Cancel") { cancel() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") { save() }
                         .disabled(!canSave)
                 }
             }
-            .frame(minWidth: 420, minHeight: 520)
+            .frame(minWidth: 420, minHeight: 580)
             .onAppear { loadFromModel() }
         }
     }
@@ -115,6 +118,13 @@ struct BookingEditorView: View {
             get: { paidBy },
             set: { paidBy = $0 }
         )
+    }
+
+    private func cancel() {
+        if booking == nil {
+            pendingAttachments.deleteStoredFiles()
+        }
+        dismiss()
     }
 
     private func loadFromModel() {
@@ -167,6 +177,15 @@ struct BookingEditorView: View {
             )
             newBooking.country = country
             modelContext.insert(newBooking)
+            for draft in pendingAttachments {
+                let attachment = Attachment(
+                    originalFilename: draft.originalFilename,
+                    storedRelativePath: draft.storedRelativePath
+                )
+                attachment.booking = newBooking
+                modelContext.insert(attachment)
+            }
+            pendingAttachments = []
         }
         dismiss()
     }
