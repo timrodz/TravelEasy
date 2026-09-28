@@ -134,15 +134,15 @@ Not parallelizable with work that needs a compile.
 
 **Acceptance Criteria:**
 
-- [ ] Create / edit / delete bookings under a selected country
-- [ ] Type picker: Flight, Hotel, Activity, Transport
-- [ ] New booking defaults to `confirmationStatus = planned`, `paymentStatus = unset`, amount empty
-- [ ] User can set optional amount, dates/times (startAt/endAt), notes
-- [ ] User can change confirmation to `booked` and payment to `paid` / `payLater` / `unset`
-- [ ] When payment is `paid`, user must choose paidBy (person A, person B, or already split)
-- [ ] List shows type, title, dates, confirmation, payment at a glance
-- [ ] Data survives quit and relaunch
-- [ ] Typecheck / build succeeds
+- [x] Create / edit / delete bookings under a selected country
+- [x] Type picker: Flight, Hotel, Activity, Transport
+- [x] New booking defaults to `confirmationStatus = planned`, `paymentStatus = unset`, amount empty
+- [x] User can set optional amount, dates/times (startAt/endAt), notes
+- [x] User can change confirmation to `booked` and payment to `paid` / `payLater` / `unset`
+- [x] When payment is `paid`, user must choose paidBy (person A, person B, or already split)
+- [x] List shows type, title, dates, confirmation, payment at a glance
+- [x] Data survives quit and relaunch
+- [x] Typecheck / build succeeds
 - [ ] Verify in the Mac app
 
 ### US-004: Split summary, budget, and trip date span

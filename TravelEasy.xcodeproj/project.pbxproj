@@ -19,6 +19,9 @@
 		A1B2C3D4E5F60718293A4B5C /* ISOCountryCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5D /* ISOCountryCatalog.swift */; };
 		B2C3D4E5F60718293A4B5C6D /* CountryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C3D4E5F60718293A4B5C6E /* CountryPickerView.swift */; };
 		C3D4E5F60718293A4B5C6D7E /* AddCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D4E5F60718293A4B5C6D7F /* AddCountryView.swift */; };
+		E4F5A6B7C8D9012345678901 /* BookingDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F5A6B7C8D9012345678902 /* BookingDisplay.swift */; };
+		E4F5A6B7C8D9012345678903 /* BookingEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F5A6B7C8D9012345678904 /* BookingEditorView.swift */; };
+		E4F5A6B7C8D9012345678905 /* BookingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F5A6B7C8D9012345678906 /* BookingRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		A1B2C3D4E5F60718293A4B5D /* ISOCountryCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISOCountryCatalog.swift; sourceTree = "<group>"; };
 		B2C3D4E5F60718293A4B5C6E /* CountryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerView.swift; sourceTree = "<group>"; };
 		C3D4E5F60718293A4B5C6D7F /* AddCountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCountryView.swift; sourceTree = "<group>"; };
+		E4F5A6B7C8D9012345678902 /* BookingDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDisplay.swift; sourceTree = "<group>"; };
+		E4F5A6B7C8D9012345678904 /* BookingEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingEditorView.swift; sourceTree = "<group>"; };
+		E4F5A6B7C8D9012345678906 /* BookingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -65,6 +71,9 @@
 				A01560A084AEEB74E552F46D /* Assets.xcassets */,
 				989FC9B33FFC9EA1DB1AF7E7 /* ContentView.swift */,
 				C3D4E5F60718293A4B5C6D7F /* AddCountryView.swift */,
+				E4F5A6B7C8D9012345678902 /* BookingDisplay.swift */,
+				E4F5A6B7C8D9012345678904 /* BookingEditorView.swift */,
+				E4F5A6B7C8D9012345678906 /* BookingRowView.swift */,
 				B2C3D4E5F60718293A4B5C6E /* CountryPickerView.swift */,
 				D4E5F6A7B8C9012345678902 /* TripSettingsView.swift */,
 				18603BA6B208D4BA72585180 /* TravelEasyApp.swift */,
@@ -156,6 +165,9 @@
 				A1B2C3D4E5F60718293A4B5C /* ISOCountryCatalog.swift in Sources */,
 				B2C3D4E5F60718293A4B5C6D /* CountryPickerView.swift in Sources */,
 				C3D4E5F60718293A4B5C6D7E /* AddCountryView.swift in Sources */,
+				E4F5A6B7C8D9012345678901 /* BookingDisplay.swift in Sources */,
+				E4F5A6B7C8D9012345678903 /* BookingEditorView.swift in Sources */,
+				E4F5A6B7C8D9012345678905 /* BookingRowView.swift in Sources */,
 				8AA7C07DDF228978DEA19981 /* TravelEasyApp.swift in Sources */,
 				C50FB1F22B1DB6F0A08B509E /* Trip.swift in Sources */,
 				D4E5F6A7B8C9012345678901 /* TripSettingsView.swift in Sources */,
