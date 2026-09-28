@@ -1,0 +1,335 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05D31C62556A47922C690F5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989FC9B33FFC9EA1DB1AF7E7 /* ContentView.swift */; };
+		3EA1FE3225EC753FDC4BC745 /* BookingEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A73B83413122F0F6A03728 /* BookingEnums.swift */; };
+		4E5D0F6FC344A30A24DDCB0D /* Attachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D9FF73EF62031DA2206A51 /* Attachment.swift */; };
+		8AA7C07DDF228978DEA19981 /* TravelEasyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18603BA6B208D4BA72585180 /* TravelEasyApp.swift */; };
+		9D7AB290BA6398DC0E193660 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A01560A084AEEB74E552F46D /* Assets.xcassets */; };
+		AFF10C28F003A9A0CC5117B9 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7797897F8A1B454708A3E7C /* Country.swift */; };
+		B69BA4A19CB7A47AE8550D27 /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C558B961AA5E72650FCA43 /* Booking.swift */; };
+		C50FB1F22B1DB6F0A08B509E /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083F5EA85550F5803FCA09D /* Trip.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		18603BA6B208D4BA72585180 /* TravelEasyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelEasyApp.swift; sourceTree = "<group>"; };
+		3D233BE404AF9F8D7B2041A2 /* TravelEasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelEasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8083F5EA85550F5803FCA09D /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		989FC9B33FFC9EA1DB1AF7E7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A01560A084AEEB74E552F46D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A2D9FF73EF62031DA2206A51 /* Attachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachment.swift; sourceTree = "<group>"; };
+		C7797897F8A1B454708A3E7C /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		D5C558B961AA5E72650FCA43 /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
+		F9A73B83413122F0F6A03728 /* BookingEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingEnums.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		123DDAE2C09AFD889EA69F00 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D233BE404AF9F8D7B2041A2 /* TravelEasy.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5899DC7BED81634236EDC432 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A2D9FF73EF62031DA2206A51 /* Attachment.swift */,
+				D5C558B961AA5E72650FCA43 /* Booking.swift */,
+				F9A73B83413122F0F6A03728 /* BookingEnums.swift */,
+				C7797897F8A1B454708A3E7C /* Country.swift */,
+				8083F5EA85550F5803FCA09D /* Trip.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6802859A8ED335D8A3273FC2 /* TravelEasy */ = {
+			isa = PBXGroup;
+			children = (
+				A01560A084AEEB74E552F46D /* Assets.xcassets */,
+				989FC9B33FFC9EA1DB1AF7E7 /* ContentView.swift */,
+				18603BA6B208D4BA72585180 /* TravelEasyApp.swift */,
+				5899DC7BED81634236EDC432 /* Models */,
+			);
+			path = TravelEasy;
+			sourceTree = "<group>";
+		};
+		E84144F7FD9D444C17421249 = {
+			isa = PBXGroup;
+			children = (
+				6802859A8ED335D8A3273FC2 /* TravelEasy */,
+				123DDAE2C09AFD889EA69F00 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6BDA34FDD27DA583A6AD66FB /* TravelEasy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 086EDB6C1768B6E175EAD271 /* Build configuration list for PBXNativeTarget "TravelEasy" */;
+			buildPhases = (
+				F61307564274CEB7555FA397 /* Sources */,
+				590C70432EC288D1719F5F84 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TravelEasy;
+			packageProductDependencies = (
+			);
+			productName = TravelEasy;
+			productReference = 3D233BE404AF9F8D7B2041A2 /* TravelEasy.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1487C3DEA4DFE4912E25FA6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = D4C1908C6BB62D33C14F0680 /* Build configuration list for PBXProject "TravelEasy" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = E84144F7FD9D444C17421249;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 123DDAE2C09AFD889EA69F00 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6BDA34FDD27DA583A6AD66FB /* TravelEasy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		590C70432EC288D1719F5F84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D7AB290BA6398DC0E193660 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F61307564274CEB7555FA397 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E5D0F6FC344A30A24DDCB0D /* Attachment.swift in Sources */,
+				B69BA4A19CB7A47AE8550D27 /* Booking.swift in Sources */,
+				3EA1FE3225EC753FDC4BC745 /* BookingEnums.swift in Sources */,
+				05D31C62556A47922C690F5C /* ContentView.swift in Sources */,
+				AFF10C28F003A9A0CC5117B9 /* Country.swift in Sources */,
+				8AA7C07DDF228978DEA19981 /* TravelEasyApp.swift in Sources */,
+				C50FB1F22B1DB6F0A08B509E /* Trip.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		353CDD35F2AE69BC803FB433 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		6C75A54A4FA62C88282EC891 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TravelEasy/TravelEasy.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timrodz.traveleasy;
+				PRODUCT_NAME = TravelEasy;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7D5730663CD38CF48938DA6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		DEFADEAC0E0A8CC9E6A90E4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TravelEasy/TravelEasy.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timrodz.traveleasy;
+				PRODUCT_NAME = TravelEasy;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		086EDB6C1768B6E175EAD271 /* Build configuration list for PBXNativeTarget "TravelEasy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEFADEAC0E0A8CC9E6A90E4E /* Debug */,
+				6C75A54A4FA62C88282EC891 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D4C1908C6BB62D33C14F0680 /* Build configuration list for PBXProject "TravelEasy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				353CDD35F2AE69BC803FB433 /* Debug */,
+				7D5730663CD38CF48938DA6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A1487C3DEA4DFE4912E25FA6 /* Project object */;
+}

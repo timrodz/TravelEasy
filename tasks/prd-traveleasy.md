@@ -104,15 +104,15 @@ Not parallelizable with work that needs a compile.
 
 **Acceptance Criteria:**
 
-- [ ] macOS App project named TravelEasy, bundle id `com.timrodz.traveleasy`
-- [ ] SwiftUI lifecycle with `NavigationSplitView` shell (sidebar + detail placeholders)
-- [ ] App Sandbox enabled; user-selected file read entitlement for imports
-- [ ] SwiftData models: `Trip`, `Country`, `Booking`, `Attachment` with relationships Trip → Countries → Bookings → Attachments
-- [ ] Enums persisted: booking `type` (`flight|hotel|activity|transport`), `confirmationStatus` (`planned|booked`), `paymentStatus` (`unset|paid|payLater`), `paidBy` (`personA|personB|splitAlready`)
-- [ ] Booking fields: title, optional startAt/endAt, optional amount (Decimal), notes; defaults `planned` + `unset`
-- [ ] Trip fields: name, homeCurrency (default `NZD`), personAName (`Me`), personBName (`Partner`)
-- [ ] App launches without crash; empty store creates cleanly
-- [ ] Typecheck / build succeeds in Xcode
+- [x] macOS App project named TravelEasy, bundle id `com.timrodz.traveleasy`
+- [x] SwiftUI lifecycle with `NavigationSplitView` shell (sidebar + detail placeholders)
+- [x] App Sandbox enabled; user-selected file read entitlement for imports
+- [x] SwiftData models: `Trip`, `Country`, `Booking`, `Attachment` with relationships Trip → Countries → Bookings → Attachments
+- [x] Enums persisted: booking `type` (`flight|hotel|activity|transport`), `confirmationStatus` (`planned|booked`), `paymentStatus` (`unset|paid|payLater`), `paidBy` (`personA|personB|splitAlready`)
+- [x] Booking fields: title, optional startAt/endAt, optional amount (Decimal), notes; defaults `planned` + `unset`
+- [x] Trip fields: name, homeCurrency (default `NZD`), personAName (`Me`), personBName (`Partner`)
+- [x] App launches without crash; empty store creates cleanly
+- [x] Typecheck / build succeeds in Xcode
 
 ### US-002: Trip shell and country CRUD
 
@@ -261,7 +261,7 @@ Not parallelizable with work that needs a compile.
 1. Install Xcode from the Mac App Store — **done (26.5 / 17F42)**
 2. Open Xcode once; accept license; install extra components if prompted
 3. Sign in: Xcode → Settings → Accounts (Apple ID) for local signing
-4. Create macOS App (SwiftUI + SwiftData) when implementing US-001
+4. Create macOS App (SwiftUI + SwiftData) when implementing US-001 — **done**
 5. Enable App Sandbox; add user-selected file read for attachment import
 
 ### Domain model
