@@ -164,6 +164,7 @@ struct BookingEditorView: View {
             booking.paidBy = resolvedPaidBy
             booking.notes = notes
         } else {
+            let nextSortOrder = (country.bookings.compactMap(\.sortOrder).max() ?? -1) + 1
             let newBooking = Booking(
                 type: type,
                 title: trimmedTitle,
@@ -173,7 +174,8 @@ struct BookingEditorView: View {
                 confirmationStatus: confirmationStatus,
                 paymentStatus: paymentStatus,
                 paidBy: resolvedPaidBy,
-                notes: notes
+                notes: notes,
+                sortOrder: nextSortOrder
             )
             newBooking.country = country
             modelContext.insert(newBooking)

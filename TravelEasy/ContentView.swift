@@ -208,20 +208,37 @@ struct ContentView: View {
 
 private struct CountrySummaryEditor: View {
     @Binding var summary: String
+    @State private var measuredHeight: CGFloat = 36
+
+    private static let placeholder = "Visa, tips, contacts, reminders…"
+    private static let textInsets = EdgeInsets(top: 8, leading: 5, bottom: 8, trailing: 5)
 
     var body: some View {
         ZStack(alignment: .topLeading) {
             if summary.isEmpty {
-                Text("Visa, tips, contacts, reminders…")
+                Text(Self.placeholder)
                     .foregroundStyle(.tertiary)
-                    .padding(.horizontal, 5)
-                    .padding(.vertical, 8)
+                    .padding(Self.textInsets)
                     .allowsHitTesting(false)
             }
-            TextEditor(text: $summary)
-                .font(.body)
-                .frame(minHeight: 88)
-                .scrollContentBackground(.hidden)
+
+            CountrySummaryLinkTextView(text: $summary, height: $measuredHeight)
+                .frame(height: measuredHeight)
+                .padding(.horizontal, 1)
+        }
+    }
+}
+
+private enum CountryBookingListSortMode: String, CaseIterable, Identifiable {
+    case manual
+    case startDate
+
+    var id: String { rawValue }
+
+    var menuLabel: String {
+        switch self {
+        case .manual: return "Manual order"
+        case .startDate: return "Start date"
         }
     }
 }
@@ -235,13 +252,19 @@ private struct CountryDetailView: View {
     @State private var showingAddBooking = false
     @State private var bookingToEdit: Booking?
     @State private var bookingPendingDelete: Booking?
+    @State private var bookingListSortMode: CountryBookingListSortMode = .manual
 
     private var homeCurrency: String {
         country.trip?.homeCurrency ?? "NZD"
     }
 
-    private var sortedBookings: [Booking] {
-        country.bookings.sorted(by: bookingSort)
+    private var displayedBookings: [Booking] {
+        switch bookingListSortMode {
+        case .manual:
+            return country.bookings.sorted(by: bookingManualSort)
+        case .startDate:
+            return country.bookings.sorted(by: bookingStartDateSort)
+        }
     }
 
     var body: some View {
@@ -275,8 +298,8 @@ private struct CountryDetailView: View {
                 }
                 .listSectionSeparator(.hidden, edges: [.top, .bottom])
 
-                Section("Bookings") {
-                    if sortedBookings.isEmpty {
+                Section {
+                    if displayedBookings.isEmpty {
                         ContentUnavailableView(
                             "No bookings yet",
                             systemImage: "calendar",
@@ -284,23 +307,35 @@ private struct CountryDetailView: View {
                         )
                         .listRowBackground(Color.clear)
                     } else {
-                        ForEach(sortedBookings) { booking in
-                            Button {
-                                bookingToEdit = booking
-                            } label: {
-                                BookingRowView(booking: booking, homeCurrency: homeCurrency)
-                            }
-                            .buttonStyle(.plain)
-                            .contextMenu {
-                                Button("Edit") {
+                        ForEach(displayedBookings) { booking in
+                            BookingRowView(booking: booking, homeCurrency: homeCurrency)
+                                .contentShape(Rectangle())
+                                .onTapGesture {
                                     bookingToEdit = booking
                                 }
-                                Button("Delete…", role: .destructive) {
-                                    bookingPendingDelete = booking
+                                .contextMenu {
+                                    Button("Edit") {
+                                        bookingToEdit = booking
+                                    }
+                                    Button("Delete…", role: .destructive) {
+                                        bookingPendingDelete = booking
+                                    }
                                 }
-                            }
                         }
                         .onDelete(perform: deleteBookingsAtOffsets)
+                        .onMove(perform: moveBookings)
+                    }
+                } header: {
+                    HStack {
+                        Text("Bookings")
+                        Spacer()
+                        Picker("Sort", selection: $bookingListSortMode) {
+                            ForEach(CountryBookingListSortMode.allCases) { mode in
+                                Text(mode.menuLabel).tag(mode)
+                            }
+                        }
+                        .pickerStyle(.menu)
+                        .labelsHidden()
                     }
                 }
             }
@@ -339,6 +374,9 @@ private struct CountryDetailView: View {
         } message: { booking in
             Text("“\(booking.title)” will be permanently removed.")
         }
+        .onAppear {
+            ensureDistinctBookingSortOrdersIfNeeded()
+        }
     }
 
     private var deleteBookingAlertBinding: Binding<Bool> {
@@ -348,22 +386,58 @@ private struct CountryDetailView: View {
         )
     }
 
-    private func bookingSort(_ lhs: Booking, _ rhs: Booking) -> Bool {
+    private func bookingManualSort(_ lhs: Booking, _ rhs: Booking) -> Bool {
+        let leftOrder = lhs.sortOrder ?? Int.max
+        let rightOrder = rhs.sortOrder ?? Int.max
+        if leftOrder != rightOrder {
+            return leftOrder < rightOrder
+        }
+        return lhs.title.localizedCaseInsensitiveCompare(rhs.title) == .orderedAscending
+    }
+
+    private func bookingStartDateSort(_ lhs: Booking, _ rhs: Booking) -> Bool {
         switch (lhs.startAt, rhs.startAt) {
         case (let left?, let right?):
-            return left < right
+            if left != right { return left < right }
+            return bookingManualSort(lhs, rhs)
         case (nil, _?):
             return false
         case (_?, nil):
             return true
         case (nil, nil):
-            return lhs.title.localizedCaseInsensitiveCompare(rhs.title) == .orderedAscending
+            return bookingManualSort(lhs, rhs)
+        }
+    }
+
+    private func ensureDistinctBookingSortOrdersIfNeeded() {
+        let bookings = country.bookings
+        guard !bookings.isEmpty else { return }
+
+        let assignedOrders = bookings.compactMap(\.sortOrder)
+        let needsNormalization =
+            bookings.contains(where: { $0.sortOrder == nil })
+            || (bookings.count > 1 && Set(assignedOrders).count <= 1)
+
+        guard needsNormalization else { return }
+
+        let ordered = bookings.sorted(by: bookingStartDateSort)
+        for (index, booking) in ordered.enumerated() {
+            booking.sortOrder = index
+        }
+    }
+
+    private func moveBookings(from source: IndexSet, to destination: Int) {
+        guard bookingListSortMode == .manual else { return }
+        var ordered = country.bookings.sorted(by: bookingManualSort)
+        ordered.move(fromOffsets: source, toOffset: destination)
+        for (index, booking) in ordered.enumerated() {
+            booking.sortOrder = index
         }
     }
 
     private func deleteBookingsAtOffsets(_ offsets: IndexSet) {
         for index in offsets {
-            let booking = sortedBookings[index]
+            let booking = displayedBookings[index]
             booking.deleteAttachmentFiles()
             modelContext.delete(booking)
         }

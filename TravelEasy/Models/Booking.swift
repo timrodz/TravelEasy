@@ -12,6 +12,8 @@ final class Booking {
     var paymentStatus: PaymentStatus
     var paidBy: PaidBy?
     var notes: String
+    /// Manual list order within the country (lower first). Nil until assigned (legacy rows).
+    var sortOrder: Int?
 
     var country: Country?
 
@@ -27,7 +29,8 @@ final class Booking {
         confirmationStatus: ConfirmationStatus = .planned,
         paymentStatus: PaymentStatus = .unset,
         paidBy: PaidBy? = nil,
-        notes: String = ""
+        notes: String = "",
+        sortOrder: Int? = nil
     ) {
         self.type = type
         self.title = title
@@ -38,5 +41,6 @@ final class Booking {
         self.paymentStatus = paymentStatus
         self.paidBy = paidBy
         self.notes = notes
+        self.sortOrder = sortOrder
     }
 }
