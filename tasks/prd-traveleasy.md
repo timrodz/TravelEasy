@@ -224,15 +224,15 @@ Not parallelizable with work that needs a compile.
 
 **Acceptance Criteria:**
 
-- [ ] Add optional `summary` (String, default empty) field on `Country`
-- [ ] Country detail view shows a “Summary” section with a multi-line text box above the bookings list
-- [ ] Placeholder copy indicates purpose (e.g. “Visa, tips, contacts, reminders…”)
-- [ ] Edits to country summary save automatically via SwiftData binding (no separate Save button required)
-- [ ] In Trip Home, the trip title ("My Trip" by default) is an editable text field (or supports inline rename) that binds directly to `trip.name`
-- [ ] Summary notes and edited trip name survive quit and relaunch
-- [ ] Empty summary is fine; trip name fallback/trimming handled sensibly
-- [ ] Typecheck / build succeeds
-- [ ] Verify in the Mac app
+- [x] Add optional `summary` (String, default empty) field on `Country`
+- [x] Country detail view shows a “Summary” section with a multi-line text box above the bookings list
+- [x] Placeholder copy indicates purpose (e.g. “Visa, tips, contacts, reminders…”)
+- [x] Edits to country summary save automatically via SwiftData binding (no separate Save button required)
+- [x] In Trip Home, the trip title ("My Trip" by default) is an editable text field (or supports inline rename) that binds directly to `trip.name`
+- [x] Summary notes and edited trip name survive quit and relaunch
+- [x] Empty summary is fine; trip name fallback/trimming handled sensibly
+- [x] Typecheck / build succeeds
+- [x] Verify in the Mac app
 
 ## Functional Requirements
 

@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct TripHomeView: View {
-    let trip: Trip
+    @Bindable var trip: Trip
+    @FocusState private var tripTitleFocused: Bool
     var onAddCountry: () -> Void = {}
     var onTripSettings: () -> Void = {}
 
@@ -20,9 +21,15 @@ struct TripHomeView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                Text(trip.name)
+                TextField("My Trip", text: $trip.name)
                     .font(.largeTitle)
                     .fontWeight(.semibold)
+                    .textFieldStyle(.plain)
+                    .focused($tripTitleFocused)
+                    .onSubmit { normalizeTripName() }
+                    .onChange(of: tripTitleFocused) { _, focused in
+                        if !focused { normalizeTripName() }
+                    }
 
                 GroupBox("Up Next") {
                     upNextContent
@@ -168,6 +175,11 @@ struct TripHomeView: View {
             return "\(trip.personBName) owes \(trip.personAName) \(formatted)"
         }
         return "\(trip.personAName) owes \(trip.personBName) \(formatted)"
+    }
+
+    private func normalizeTripName() {
+        let trimmed = trip.name.trimmingCharacters(in: .whitespacesAndNewlines)
+        trip.name = trimmed.isEmpty ? "My Trip" : trimmed
     }
 
     @ViewBuilder

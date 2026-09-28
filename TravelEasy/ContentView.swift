@@ -206,6 +206,26 @@ struct ContentView: View {
     }
 }
 
+private struct CountrySummaryEditor: View {
+    @Binding var summary: String
+
+    var body: some View {
+        ZStack(alignment: .topLeading) {
+            if summary.isEmpty {
+                Text("Visa, tips, contacts, reminders…")
+                    .foregroundStyle(.tertiary)
+                    .padding(.horizontal, 5)
+                    .padding(.vertical, 8)
+                    .allowsHitTesting(false)
+            }
+            TextEditor(text: $summary)
+                .font(.body)
+                .frame(minHeight: 88)
+                .scrollContentBackground(.hidden)
+        }
+    }
+}
+
 private struct CountryDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Bindable var country: Country
@@ -247,6 +267,13 @@ private struct CountryDetailView: View {
                     }
                     .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
                 }
+
+                Section("Summary") {
+                    CountrySummaryEditor(summary: $country.summary)
+                        .listRowInsets(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
+                        .listRowSeparator(.hidden, edges: [.top, .bottom])
+                }
+                .listSectionSeparator(.hidden, edges: [.top, .bottom])
 
                 Section("Bookings") {
                     if sortedBookings.isEmpty {
