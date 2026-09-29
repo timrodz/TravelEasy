@@ -106,7 +106,8 @@ struct ContentView: View {
             if let country = selectedCountry {
                 CountryDetailView(
                     country: country,
-                    excludedISOCodes: excludedISOCodes(for: country)
+                    excludedISOCodes: excludedISOCodes(for: country),
+                    onCountryRemovedFromTrip: { sidebarSelection = .tripHome }
                 )
             } else if let trip {
                 TripHomeView(
@@ -247,9 +248,11 @@ private struct CountryDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Bindable var country: Country
     var excludedISOCodes: Set<String>
+    var onCountryRemovedFromTrip: () -> Void = {}
 
     @State private var showingChangeCountry = false
     @State private var showingAddBooking = false
+    @State private var showingRemoveCountryConfirmation = false
     @State private var bookingToEdit: Booking?
     @State private var bookingPendingDelete: Booking?
     @State private var bookingListSortMode: CountryBookingListSortMode = .manual
@@ -343,12 +346,21 @@ private struct CountryDetailView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .navigationTitle(country.labeledName)
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
+            ToolbarItemGroup(placement: .primaryAction) {
                 Button {
                     showingAddBooking = true
                 } label: {
                     Label("Add Booking", systemImage: "plus")
                 }
+                Menu {
+                    Button("Remove from Trip…", role: .destructive) {
+                        showingRemoveCountryConfirmation = true
+                    }
+                } label: {
+                    Label("Country Actions", systemImage: "ellipsis.circle")
+                }
+                .menuStyle(.borderlessButton)
+                .help("More country actions")
             }
         }
         .sheet(isPresented: $showingChangeCountry) {
@@ -359,6 +371,17 @@ private struct CountryDetailView: View {
         }
         .sheet(item: $bookingToEdit) { booking in
             BookingEditorView(country: country, booking: booking)
+        }
+        .alert(
+            "Remove \(country.labeledName) from trip?",
+            isPresented: $showingRemoveCountryConfirmation
+        ) {
+            Button("Remove from Trip", role: .destructive) {
+                removeCountryFromTrip()
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text(removeCountryFromTripMessage)
         }
         .alert(
             "Delete booking?",
@@ -447,6 +470,23 @@ private struct CountryDetailView: View {
         booking.deleteAttachmentFiles()
         modelContext.delete(booking)
         bookingPendingDelete = nil
+    }
+
+    private var removeCountryFromTripMessage: String {
+        let bookingCount = country.bookings.count
+        if bookingCount == 0 {
+            return "This country will be removed from your trip. Its summary notes will be deleted."
+        }
+        let bookingWord = bookingCount == 1 ? "booking" : "bookings"
+        return "This will permanently remove the country and delete its \(bookingCount) \(bookingWord), including any attachments."
+    }
+
+    private func removeCountryFromTrip() {
+        for booking in country.bookings {
+            booking.deleteAttachmentFiles()
+        }
+        modelContext.delete(country)
+        onCountryRemovedFromTrip()
     }
 }
 
